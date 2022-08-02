@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: .
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASS: postgres
+      DB_NAME_DEV: movies_sharing_development
+      DB_NAME_TEST: movies_sharing_test
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - bundle:/app/vendor/bundle
+    depends_on:
+      - db
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
+  bundle:
