@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index_guest"
   get "index_user", to: "home#index_user"
+  get "share", to: "share#new"
 end
