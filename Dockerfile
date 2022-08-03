@@ -1,6 +1,8 @@
 FROM ruby:3.1.2
 
-RUN apt-get update -qq && apt-get install -y postgresql-client
+RUN apt-get update -qq && apt-get install -y postgresql-client curl
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && apt-get install -yq nodejs
+
 SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
 
 ENV APP_ROOT=/app
@@ -19,7 +21,6 @@ COPY vendor ${APP_ROOT}/vendor
 
 RUN gem install bundler:2.3.19
 RUN echo "gem: --no-rdoc --no-ri" > ~/.gemrc
-RUN bundle config set --local deployment 'true'
 RUN bundle install
 
 EXPOSE 3000
