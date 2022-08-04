@@ -5,10 +5,9 @@ class VideosController < ApplicationController
     @videos = Video.all
 
     if user_signed_in?
-      @grouped_reaction_video_ids =
+      @grouped_video_reactions =
         current_user.video_reactions
-                    .group_by { |reaction| reaction.reaction_type }
-                    .transform_values { |reactions| reactions.pluck(:video_id) }
+                    .group_by { |reaction| reaction.video_id }
     end
   end
 

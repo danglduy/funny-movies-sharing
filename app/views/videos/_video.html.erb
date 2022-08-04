@@ -10,7 +10,7 @@
         <p><%= video.title %></p>
       </div>
       <% if user_signed_in? %>
-        <%= render "video_reaction", video: video, is_up_reacted: is_up_reacted, is_down_reacted: is_down_reacted %>
+        <%= render "video_reaction", video: video, video_reaction: video_reaction %>
       <% end %>
     </div>
     <p>Shared by: <%= video.user.email %></p>
