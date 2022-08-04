@@ -1,0 +1,26 @@
+<%= render partial: "shared/header" %>
+
+<main role="main" class="container px-5 my-2">
+  <div class="row mt-5">
+    <div class="col-8 offset-2">
+      <% if flash[:error].present? %>
+        <div class="alert alert-danger" role="alert">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+
+      <%= form_with model: @video, url: "/videos" do |f| %>
+        <h1 class="h3 mb-3 fw-normal">Share a YouTube movie</h1>
+        <div class="mb-3 row">
+          <div class="col-3">
+            <label for="youtubeUrl" class="col-form-label">YouTube Url:</label>
+          </div>
+          <div class="col-9">
+            <%= f.text_field :video_url, class: "form-control mb-3", id: "youtubeUrl" %>
+            <%= f.submit "Share", class: "w-100 btn btn-lg btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>
