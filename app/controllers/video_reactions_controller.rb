@@ -10,7 +10,8 @@ class VideoReactionsController < ApplicationController
   end
 
   def destroy
-    VideoReaction.find_by(id: params[:id]).destroy
+    @video_reaction = VideoReaction.find_by(id: params[:id])
+    @video_reaction.destroy
   end
 
   private
