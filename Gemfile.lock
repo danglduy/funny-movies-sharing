@@ -149,6 +149,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.8-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-linux)
+      racc (~> 1.4)
     oga (3.4)
       ast
       ruby-ll (~> 2.1)
@@ -253,6 +255,7 @@ PLATFORMS
   aarch64-linux
   amd64-linux
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
