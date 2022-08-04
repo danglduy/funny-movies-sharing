@@ -3,6 +3,12 @@ class VideosController < ApplicationController
 
   def index
     @videos = Video.all
+
+    if user_signed_in?
+      @grouped_video_reactions =
+        current_user.video_reactions
+                    .group_by { |reaction| reaction.video_id }
+    end
   end
 
   def new

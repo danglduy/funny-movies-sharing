@@ -9,10 +9,9 @@
       <div class="col-6">
         <p><%= video.title %></p>
       </div>
-      <div class="col-6 text-end">
-        <button class="btn btn-outline-primary me-1">Like</button>
-        <button class="btn btn-outline-secondary">Dislike</button>
-      </div>
+      <% if user_signed_in? %>
+        <%= render "video_reaction", video: video, video_reaction: video_reaction %>
+      <% end %>
     </div>
     <p>Shared by: <%= video.user.email %></p>
   </div>

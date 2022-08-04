@@ -1,0 +1,10 @@
+<%= tag.div class: "col-6 text-end", id: "#{dom_id(video)}_reaction" do %>
+  <% if video_reaction.blank? %>
+    <%= link_to "Like", video_reactions_path(video_id: video.id, reaction_type: :up), data: {turbo_method: :post}, class: "btn btn-outline-primary me-1" %>
+    <%= link_to "Dislike", video_reactions_path(video_id: video.id, reaction_type: :down), data: {turbo_method: :post}, class: "btn btn-outline-secondary" %>
+  <% elsif video_reaction.up? %>
+    <%= link_to "Liked", video_reaction_path(video_reaction), data: {turbo_method: :delete}, class: "btn btn-primary" %>
+  <% elsif video_reaction.down? %>
+    <%= link_to "Disliked", video_reaction_path(video_reaction), data: {turbo_method: :delete}, class: "btn btn-secondary" %>
+  <% end %>
+<% end %>

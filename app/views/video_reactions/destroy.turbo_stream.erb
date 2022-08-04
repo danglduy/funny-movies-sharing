@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "#{dom_id(@video_reaction.video)}_reaction" do %>
+  <%= render partial: "videos/video_reaction", locals: { video: @video_reaction.video, video_reaction: nil } %>
+<% end %>

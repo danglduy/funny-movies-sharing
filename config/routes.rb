@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get "share", to: "videos#new"
   resources :videos, only: :create
 
+  resources :video_reactions, only: [:create, :destroy]
+
   get "auth", to: "authentication#new"
   post "auth", to: "authentication#create"
   delete "auth", to: "authentication#destroy"

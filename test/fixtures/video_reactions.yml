@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  video: one
+  user: one
+  reaction_type: 1
+
+two:
+  video: two
+  user: two
+  reaction_type: 1

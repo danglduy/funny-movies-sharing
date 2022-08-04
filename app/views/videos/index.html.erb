@@ -1,5 +1,7 @@
 <%= render partial: "shared/header" %>
 
 <main role="main" class="container px-5">
-  <%= render partial: "video", collection: @videos %>
+  <% @videos.each do |video| %>
+    <%= render partial: "video", locals: { video: video, video_reaction: @grouped_video_reactions&.dig(video.id)&.first} %>
+  <% end %>
 </main>
