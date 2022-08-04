@@ -1,0 +1,23 @@
+<header>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a href="/" class="navbar-brand">Funny movies</a>
+      <% if user_signed_in? %>
+        <div class="d-flex col-10">
+          <div class="col-6 my-auto text-end me-2">
+            <span>Welcome <%= current_user.email %></span>
+          </div>
+
+          <a href="/share" class="btn btn-outline-success col-3 me-2" role="button">Share a movie</a>
+          <%= link_to "Logout", auth_path, data: { "turbo-method": :delete }, class: "btn btn-outline-danger col-3 me-2", role: "button" %>
+        </div>
+      <% else %>
+        <%= form_with model: User.new, url: "/auth", method: :post, local: true, class: "d-flex col-8", data: { turbo: false } do |f| %>
+          <%= f.email_field :email, class: "form-control me-2", placeholder: "email", aria: { label: "Email"} %>
+          <%= f.password_field :password, class: "form-control me-2", placeholder: "password", aria: { label: "Password"} %>
+          <%= f.submit "Login / Register", class: "btn btn-outline-success col-4" %>
+        <% end %>
+      <% end %>
+    </div>
+  </nav>
+</header>

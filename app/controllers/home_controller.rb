@@ -1,5 +1,3 @@
 class HomeController < ApplicationController
-  def index_guest; end
-
-  def index_user; end
+  def index; end
 end
