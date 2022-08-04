@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_04_102948) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_04_141209) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_102948) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "video_reactions", force: :cascade do |t|
+    t.bigint "video_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "reaction_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_video_reactions_on_user_id"
+    t.index ["video_id"], name: "index_video_reactions_on_video_id"
   end
 
   create_table "videos", force: :cascade do |t|
@@ -33,5 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_102948) do
     t.index ["user_id"], name: "index_videos_on_user_id"
   end
 
+  add_foreign_key "video_reactions", "users"
+  add_foreign_key "video_reactions", "videos"
   add_foreign_key "videos", "users"
 end
