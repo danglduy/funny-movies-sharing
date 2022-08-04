@@ -1,5 +1,11 @@
 <%= render partial: "shared/header" %>
+<% up_reaction_video_ids = @grouped_reaction_video_ids&.dig("up") %>
+<% down_reaction_video_ids = @grouped_reaction_video_ids&.dig("down") %>
 
 <main role="main" class="container px-5">
-  <%= render partial: "video", collection: @videos %>
+  <% @videos.each do |video| %>
+    <%= render partial: "video", locals: { video: video,
+      is_up_reacted: up_reaction_video_ids&.include?(video.id),
+      is_down_reacted: down_reaction_video_ids&.include?(video.id) } %>
+  <% end %>
 </main>

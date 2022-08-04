@@ -3,6 +3,13 @@ class VideosController < ApplicationController
 
   def index
     @videos = Video.all
+
+    if user_signed_in?
+      @grouped_reaction_video_ids =
+        current_user.video_reactions
+                    .group_by { |reaction| reaction.reaction_type }
+                    .transform_values { |reactions| reactions.pluck(:video_id) }
+    end
   end
 
   def new
