@@ -1,0 +1,10 @@
+<%= tag.div class: "col-6 text-end", id: "#{dom_id(video)}_reaction" do %>
+  <% if is_up_reacted %>
+    <%= link_to "Liked", "#", class: "btn btn-primary" %>
+  <% elsif is_down_reacted %>
+    <%= link_to "Disliked", "#", class: "btn btn-secondary" %>
+  <% else %>
+    <%= link_to "Like", "#", class: "btn btn-outline-primary me-1" %>
+    <%= link_to "Dislike", "#", class: "btn btn-outline-secondary" %>
+  <% end %>
+<% end %>
