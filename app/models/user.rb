@@ -3,5 +3,5 @@ class User < ApplicationRecord
   has_many :videos
   has_many :video_reactions
 
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
 end
