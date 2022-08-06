@@ -11,6 +11,7 @@ services:
       DB_PASS: postgres
       DB_NAME_DEV: movies_sharing_development
       DB_NAME_TEST: movies_sharing_test
+      REDIS_URL: redis://redis:6379/1
     ports:
       - "3000:3000"
     volumes:
@@ -27,6 +28,9 @@ services:
     restart: always
     volumes:
       - pgdata:/var/lib/postgresql/data
+  redis:
+    image: redis
+    restart: always
 volumes:
   pgdata:
   bundle:
