@@ -11,7 +11,7 @@ class VideoReactionsController < ApplicationController
 
   def destroy
     @video_reaction = VideoReaction.find_by(id: params[:id])
-    @video_reaction.destroy
+    @video_reaction.destroy if @video_reaction.present?
   end
 
   private

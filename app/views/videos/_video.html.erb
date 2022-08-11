@@ -14,5 +14,6 @@
       <% end %>
     </div>
     <p>Shared by: <%= video.user.email %></p>
+    <%= render "video_reactions_summary", video: video %>
   </div>
 </div>
