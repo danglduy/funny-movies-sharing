@@ -1,3 +1,6 @@
-<%= tag.div id: "#{dom_id(video)}_reactions_summary" do %>
+<%= tag.a id: "#{dom_id(video)}_reactions_summary", href: "#", title: "", data: {
+  reaction_summary_video_id_value: video.id,
+  controller: "reaction-summary",
+  action: "mouseover->reaction-summary#fetchReactionSummaries" } do %>
   <%= video_reactions_summary(video) %>
 <% end %>

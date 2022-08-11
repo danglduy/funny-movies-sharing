@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import ReactionSummaryController from "./reaction_summary_controller"
+application.register("reaction-summary", ReactionSummaryController)
