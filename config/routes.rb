@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root "videos#index"
   get "share", to: "videos#new"
-  resources :videos, only: :create
+  resources :videos, only: :create do
+    resources :video_reaction_summaries, only: :index
+  end
 
   resources :video_reactions, only: [:create, :destroy]
 
