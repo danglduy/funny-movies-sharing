@@ -3,10 +3,11 @@ class VideoReactionSummariesController < ApplicationController
     video = load_video
 
     if video.present?
+      video_reactions = video.video_reactions.includes(:user)
       render json: {
         reacted_emails: {
-          up: video.video_reactions.up.map(&:user).pluck(:email),
-          down: video.video_reactions.down.map(&:user).pluck(:email)
+          up: video_reactions.up.map { |video_reaction| video_reaction.user.email },
+          down: video_reactions.down.map { |video_reaction| video_reaction.user.email }
         }
       }
     end
@@ -15,6 +16,6 @@ class VideoReactionSummariesController < ApplicationController
   private
 
   def load_video
-    Video.includes(:video_reactions).find_by(id: params[:video_id])
+    Video.find_by(id: params[:video_id])
   end
 end
