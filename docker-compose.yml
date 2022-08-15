@@ -4,14 +4,7 @@ services:
   web:
     build:
       context: .
-    environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASS: postgres
-      DB_NAME_DEV: movies_sharing_development
-      DB_NAME_TEST: movies_sharing_test
-      REDIS_URL: redis://redis:6379/1
+    env_file: .env.docker-compose
     ports:
       - "3000:3000"
     volumes:
@@ -25,14 +18,7 @@ services:
   assets:
     build:
       context: .
-    environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASS: postgres
-      DB_NAME_DEV: movies_sharing_development
-      DB_NAME_TEST: movies_sharing_test
-      REDIS_URL: redis://redis:6379/1
+    env_file: .env.docker-compose
     volumes:
       - .:/app
       - bundle:/app/vendor/bundle
